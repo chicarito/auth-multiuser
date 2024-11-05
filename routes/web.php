@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::get('/', [AuthController::class, 'index'])->middleware(RedirectIfAuthenticated::class)->name('login');
+Route::get('/', function () {
+    return view('dashboard.index');
+});
+Route::get('/asep', [AuthController::class, 'index'])->middleware(RedirectIfAuthenticated::class)->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 
