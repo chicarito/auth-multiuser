@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'karyawan',
             'username' => 'karyawan123',
             'password' => bcrypt(123),
-            'role' => 'karyawan',
+            'role' => 'user',
+            'jabatan' => 'karyawan',
         ]);
     }
 }
