@@ -39,10 +39,20 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">@yield('title_page')</h1>
                 </div>
+                @yield('content')
             </main>
         </div>
     </div>
 
+    {{-- jquery_datatable --}}
+    <script src="{{ asset('datatable_jquery/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('datatable_jquery/datatables.min.css') }}">
+    <script src="{{ asset('datatable_jquery/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        });
+    </script>
     <script src="{{ asset('bootstrap/dashboard.js') }}"></script>
     <script src="{{ asset('bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>

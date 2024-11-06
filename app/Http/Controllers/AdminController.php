@@ -9,15 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        echo 'selamat datang di halaman admin <br>';
-        echo "hello " . Auth::user()->name . '<br>';
-        echo '<a href="/logout">logout</a>';
+       return view('dashboard.index');
     }
 
-    public function karyawan()
-    {
-        echo 'selamat datang di halaman karyawan <br>';
-        echo 'Hello ' . Auth::user()->name . "<br>";
-        echo '<a href="/logout">logout</a>';
-    }
 }
