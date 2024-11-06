@@ -31,7 +31,6 @@ class ManageUserController extends Controller
     public function store(Request $request)
     {
 
-        // Validasi dan simpan data
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|unique:users,username|max:255',
@@ -64,24 +63,44 @@ class ManageUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('dashboard.manage_user.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $id,
+            'password' => 'nullable|string',
+            'role' => 'required|string|in:admin,user',
+            'jabatan' => 'nullable|string|max:255',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->name = $validated['name'];
+        $user->username = $validated['username'];
+        if ($request->filled('password')) {
+            $user->password = Hash::make($validated['password']);
+        }
+        $user->role = $validated['role'];
+        $user->jabatan = $validated['jabatan'] ?? null;
+        $user->save();
+
+        return redirect()->route('ManageUser.index')->with('success', 'Pengguna berhasil diperbarui');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return back()->with('success', 'berhasil hapus ' . $user->name);
     }
 }

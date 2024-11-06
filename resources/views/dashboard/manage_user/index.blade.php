@@ -26,12 +26,15 @@
                             <h6>{{ $item->jabatan }}</h6>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-outline-warning" title="Edit Pengguna">
+                            <a href="{{ route('ManageUser.edit', $item->id) }}" class="btn btn-outline-warning"
+                                title="Edit Pengguna">
                                 <svg class="bi">
                                     <use xlink:href="#edit" />
                                 </svg>
                             </a>
-                            <form action="" method="post" class="d-inline">
+                            <form action="{{ route('ManageUser.destroy', $item->id) }}" method="post" class="d-inline">
+                                @method('DELETE')
+                                @csrf
                                 <button type="submit" onclick="return confirm('konfirmasi hapus (nama pengguna)')"
                                     class="btn btn-outline-danger" title="Hapus Pengguna">
                                     <svg class="bi">
