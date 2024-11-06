@@ -24,6 +24,8 @@ return new class extends Migration
             $table->decimal('check_out_long', 11, 8)->nullable();
             $table->double('check_in_distance')->nullable();
             $table->double('check_out_distance')->nullable();
+            $table->enum('lateness_status', ['ontime', 'late'])->nullable(); 
+            $table->enum('early_leave_status', ['ontime', 'early'])->nullable(); 
             $table->timestamps();
         });
     }

@@ -12,4 +12,9 @@ class Location extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+
+    public function workHour()
+    {
+        return $this->hasOne(WorkHour::class);
+    }
 }

@@ -51,7 +51,7 @@
                             <form action="{{ route('ManageUser.destroy', $item->id) }}" method="post" class="d-inline">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" onclick="return confirm('konfirmasi hapus pengguna')"
+                                <button type="submit" onclick="return confirm('konfirmasi hapus {{ $item->name }}?')"
                                     class="btn btn-outline-danger" title="Hapus Pengguna">
                                     <svg class="bi">
                                         <use xlink:href="#delete" />
