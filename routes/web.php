@@ -16,5 +16,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/admin', [AdminController::class, 'index'])->middleware(UserAccess::class . ':admin');
-    Route::get('/karyawan', [AdminController::class, 'karyawan'])->middleware(UserAccess::class . ':karyawan');
+    Route::get('/karyawan', [AdminController::class, 'karyawan'])->middleware(UserAccess::class . ':user');
 });
