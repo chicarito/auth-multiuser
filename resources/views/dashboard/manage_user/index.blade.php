@@ -4,25 +4,42 @@
 @endsection
 @section('content')
     <div class="mt-3">
-        <a href="" class="btn btn-success">tambah pengguna</a>
-    <table id="table" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Posisi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Alice</td>
-                <td>Developer</td>
-            </tr>
-            <tr>
-                <td>Bob</td>
-                <td>Designer</td>
-            </tr>
-            <!-- Tambahkan data sesuai kebutuhan -->
-        </tbody>
-    </table>
+        <a href="{{ route('ManageUser.create') }}" class="btn btn-lg btn-outline-success" title="Tambah Pengguna">
+            <svg class="bi">
+                <use xlink:href="#add" />
+            </svg></a>
+        <table id="table" class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Posisi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h6>Alice</h6>
+                    </td>
+                    <td>
+                        <h6>Developer</h6>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-outline-warning" title="Edit Pengguna">
+                            <svg class="bi">
+                                <use xlink:href="#edit" />
+                            </svg>
+                        </a>
+                        <form action="" method="post" class="d-inline">
+                            <button type="submit" onclick="return confirm('konfirmasi hapus (nama pengguna)')" class="btn btn-outline-danger" title="Hapus Pengguna">
+                                <svg class="bi">
+                                    <use xlink:href="#delete" />
+                                </svg>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 @endsection

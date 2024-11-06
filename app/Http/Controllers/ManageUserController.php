@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ManageUserController extends Controller
 {
@@ -12,7 +13,8 @@ class ManageUserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.manage_user.index');
+        $users = User::where('role', '!=', 'admin')->get();
+        return view('dashboard.manage_user.index', compact('users'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ManageUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.manage_user.create');
     }
 
     /**
@@ -28,7 +30,30 @@ class ManageUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|array',
+            'name.*' => 'required|string|max:255',
+            'username' => 'required|array',
+            'username.*' => 'required|string|unique:users,username|max:255',
+            'password' => 'required|array',
+            'password.*' => 'required|string|min:6',
+            'role' => 'required|array',
+            'role.*' => 'required|string|in:admin,user',
+            'jabatan' => 'nullable|array',
+            'jabatan.*' => 'nullable|string|max:255',
+        ]);
+
+        foreach ($validated['name'] as $key => $name) {
+            User::create([
+                'name' => $name,
+                'username' => $validated['username'][$key],
+                'password' => Hash::make($validated['password'][$key]),
+                'role' => $validated['role'][$key],
+                'jabatan' => $validated['jabatan'][$key] ?? null,
+            ]);
+        }
+
+        return redirect()->route('ManageUser.index')->with('success', 'Pengguna berhasil ditambahkan');
     }
 
     /**
