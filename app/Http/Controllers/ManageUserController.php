@@ -30,31 +30,28 @@ class ManageUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        // Validasi dan simpan data
         $validated = $request->validate([
-            'name' => 'required|array',
-            'name.*' => 'required|string|max:255',
-            'username' => 'required|array',
-            'username.*' => 'required|string|unique:users,username|max:255',
-            'password' => 'required|array',
-            'password.*' => 'required|string|min:6',
-            'role' => 'required|array',
-            'role.*' => 'required|string|in:admin,user',
-            'jabatan' => 'nullable|array',
-            'jabatan.*' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|unique:users,username|max:255',
+            'password' => 'required|string',
+            'role' => 'required|string|in:admin,user',
+            'jabatan' => 'nullable|string|max:255',
         ]);
 
-        foreach ($validated['name'] as $key => $name) {
-            User::create([
-                'name' => $name,
-                'username' => $validated['username'][$key],
-                'password' => Hash::make($validated['password'][$key]),
-                'role' => $validated['role'][$key],
-                'jabatan' => $validated['jabatan'][$key] ?? null,
-            ]);
-        }
+        User::create([
+            'name' => $validated['name'],
+            'username' => $validated['username'],
+            'password' => Hash::make($validated['password']),
+            'role' => $validated['role'],
+            'jabatan' => $validated['jabatan'] ?? null,
+        ]);
 
         return redirect()->route('ManageUser.index')->with('success', 'Pengguna berhasil ditambahkan');
     }
+
+
 
     /**
      * Display the specified resource.
