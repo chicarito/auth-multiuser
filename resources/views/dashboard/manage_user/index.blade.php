@@ -68,7 +68,7 @@
 
     {{-- modal --}}
     <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="importModalLabel">Import User</h5>
@@ -84,6 +84,24 @@
                                 accept=".xlsx, .csv">
                         </div>
                     </form>
+                    <p>
+                        Aturan Import :
+                    <ul>
+                        <li>File : xlsx,xls,csv</li>
+                        <li>Format pengisian :</li>
+                    </ul>
+                    <ol>
+                        <li>baris 1: nama</li>
+                        <li>baris 2: username(wajib berbeda)</li>
+                        <li>baris 3: password</li>
+                        <li>baris 4: role(user)</li>
+                        <li>baris 5: jabatan(boleh diisi atau tidak)</li>
+                    </ol>
+                    <ul>
+                        <li>Contoh :
+                        <img src="{{ asset('bahan/Screenshot 2024-11-06 175030.jpg') }}" alt=""></li>
+                    </ul>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

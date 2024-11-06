@@ -12,7 +12,7 @@
                     <div class="col-12">
                         <div class="card bg-light">
                             <div class="card-body text-center">
-                                <b>10</b>
+                                <b>{{ $countUser }}</b>
                             </div>
                         </div>
                     </div>
