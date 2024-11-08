@@ -13,4 +13,9 @@ class AdminController extends Controller
         $countUser = User::where('role', '!=', 'admin')->count();
         return view('dashboard.index', compact('countUser'));
     }
+    public function user()
+    {
+        // return view('user');
+        return 'halaman user';
+    }
 }

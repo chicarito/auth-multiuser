@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportExcelController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\UserAccess;
@@ -15,8 +16,12 @@ Route::get('/', [AuthController::class, 'index'])->middleware(RedirectIfAuthenti
 Route::post('/login', [AuthController::class, 'login'])->middleware(RedirectIfAuthenticated::class);
 Route::get('/logout', [AuthController::class, 'logout']);
 
-
-Route::get('/dashboard', [AdminController::class, 'index']);
-Route::resource('/ManageUser', ManageUserController::class);
-Route::post('/import', [ImportExcelController::class, 'import'])->name('import.excel');
-
+Route::middleware(['auth', UserAccess::class . ':admin'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index']);
+    Route::resource('/manage-user', ManageUserController::class);
+    Route::post('/import', [ImportExcelController::class, 'import'])->name('import.excel');
+    Route::resource('/manage-location', LocationController::class);
+});
+Route::middleware(['auth', UserAccess::class . ':user'])->group(function () {
+    Route::get('/user', [AdminController::class, 'user']);
+});

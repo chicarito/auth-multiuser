@@ -20,7 +20,7 @@
                 <use xlink:href="#excel" />
             </svg>
         </button>
-        <a href="{{ route('ManageUser.create') }}" class="btn btn-lg btn-outline-primary" title="Tambah Pengguna">
+        <a href="{{ route('manage-user.create') }}" class="btn btn-lg btn-outline-primary" title="Tambah Pengguna">
             <svg class="bi">
                 <use xlink:href="#add" />
             </svg></a>
@@ -42,13 +42,13 @@
                             <h6>{{ $item->jabatan }}</h6>
                         </td>
                         <td>
-                            <a href="{{ route('ManageUser.edit', $item->id) }}" class="btn btn-outline-warning"
+                            <a href="{{ route('manage-user.edit', $item->id) }}" class="btn btn-outline-warning"
                                 title="Edit Pengguna">
                                 <svg class="bi">
                                     <use xlink:href="#edit" />
                                 </svg>
                             </a>
-                            <form action="{{ route('ManageUser.destroy', $item->id) }}" method="post" class="d-inline">
+                            <form action="{{ route('manage-user.destroy', $item->id) }}" method="post" class="d-inline">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" onclick="return confirm('konfirmasi hapus {{ $item->name }}?')"

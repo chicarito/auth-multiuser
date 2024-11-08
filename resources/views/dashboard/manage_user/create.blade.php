@@ -7,7 +7,7 @@
         <div class="card-header">
         </div>
         <div class="card-body">
-            <form action="{{ route('ManageUser.store') }}" method="POST">
+            <form action="{{ route('manage-user.store') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-3">

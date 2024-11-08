@@ -18,8 +18,5 @@ class Attendance extends Model
         return $this->belongsTo(Location::class);
     }
 
-    public function workHour()
-    {
-        return $this->belongsTo(WorkHour::class);
-    }
+  
 }

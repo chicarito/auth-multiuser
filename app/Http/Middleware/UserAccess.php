@@ -19,6 +19,7 @@ class UserAccess
         if (Auth::user()->role == $role) {
             return $next($request);
         }
-        abort(401, 'Anda tidak diberi akses kehalaman ini!');
+        // abort(401, 'Anda tidak diberi akses kehalaman ini!');
+        return back()->with('error', 'access denied');
     }
 }

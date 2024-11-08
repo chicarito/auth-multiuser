@@ -7,7 +7,7 @@
         <div class="card-header">
         </div>
         <div class="card-body">
-            <form action="{{ route('ManageUser.update', $user->id) }}" method="POST">
+            <form action="{{ route('manage-user.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 

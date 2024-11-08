@@ -21,8 +21,8 @@ class RedirectIfAuthenticated
             if (Auth::user()->role === 'admin') {
                 return redirect('/dashboard');
             }
-            // return redirect('/user');
-            return 'halaman user';
+            return redirect('/user');
+            // return 'halaman user';
         }
         return $next($request);
     }
