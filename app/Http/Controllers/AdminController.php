@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,15 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        echo 'selamat datang di halaman admin <br>';
-        echo "hello " . Auth::user()->name . '<br>';
-        echo '<a href="/logout">logout</a>';
-    }
-
-    public function karyawan()
-    {
-        echo 'selamat datang di halaman karyawan <br>';
-        echo 'Hello ' . Auth::user()->name . "<br>";
-        echo '<a href="/logout">logout</a>';
+        $countUser = User::where('role', '!=', 'admin')->count();
+        return view('dashboard.index', compact('countUser'));
     }
 }
