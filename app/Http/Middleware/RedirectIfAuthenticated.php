@@ -19,9 +19,10 @@ class RedirectIfAuthenticated
     {
         if (Auth::check()) {
             if (Auth::user()->role === 'admin') {
-                return redirect('/admin');
+                return redirect('/dashboard');
             }
-            return redirect('/user');
+            // return redirect('/user');
+            return 'halaman user';
         }
         return $next($request);
     }
