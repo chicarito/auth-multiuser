@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     protected $guarded = ['id'];
-
+    protected $casts = [
+        'check_in_time' => 'datetime',
+        'check_out_time' => 'datetime',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,6 +20,4 @@ class Attendance extends Model
     {
         return $this->belongsTo(Location::class);
     }
-
-  
 }

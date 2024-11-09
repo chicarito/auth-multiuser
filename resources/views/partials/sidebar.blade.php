@@ -17,7 +17,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="{{ route('manage-user.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark"
+                        href="{{ route('manage-user.index') }}">
                         <svg class="bi">
                             <use xlink:href="#users" />
                         </svg>
@@ -25,7 +26,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="{{ route('manage-location.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark"
+                        href="{{ route('manage-location.index') }}">
                         <svg class="bi">
                             <use xlink:href="#location" />
                         </svg>
@@ -33,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="/attendance-history">
                         <svg class="bi">
                             <use xlink:href="#history" />
                         </svg>
