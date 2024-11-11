@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AttendanceHistory;
 use App\Http\Controllers\AttendanceHistoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportExcelController;
@@ -22,6 +23,7 @@ Route::middleware(['auth', UserAccess::class . ':admin'])->group(function () {
     Route::resource('/manage-user', ManageUserController::class);
     Route::post('/import', [ImportExcelController::class, 'import'])->name('import.excel');
     Route::resource('/manage-location', LocationController::class);
+    Route::get('/attendance-history', [AttendanceHistory::class, 'attendanceHistory'])->name('user');
 });
 Route::middleware(['auth', UserAccess::class . ':user'])->group(function () {
     Route::get('/user', [AdminController::class, 'user']);
