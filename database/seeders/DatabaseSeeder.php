@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attendance;
 use App\Models\Location;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -52,6 +53,30 @@ class DatabaseSeeder extends Seeder
             'radius' => '100',
             'is_active' => '1',
         ]);
-        $this->call(AttendanceSeeder::class);
+        // $this->call(AttendanceSeeder::class);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 3,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 4,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
     }
 }

@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="/attendance-history">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark" href="#">
                         <svg class="bi">
                             <use xlink:href="#history" />
                         </svg>

@@ -22,7 +22,6 @@ Route::middleware(['auth', UserAccess::class . ':admin'])->group(function () {
     Route::resource('/manage-user', ManageUserController::class);
     Route::post('/import', [ImportExcelController::class, 'import'])->name('import.excel');
     Route::resource('/manage-location', LocationController::class);
-    Route::get('/attendance-history', [AttendanceHistoryController::class, 'index']);
 });
 Route::middleware(['auth', UserAccess::class . ':user'])->group(function () {
     Route::get('/user', [AdminController::class, 'user']);
