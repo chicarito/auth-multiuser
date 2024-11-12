@@ -42,6 +42,7 @@
                 @yield('content')
             </main>
         </div>
+
     </div>
 
     {{-- jquery_datatable --}}

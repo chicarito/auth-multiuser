@@ -12,23 +12,22 @@
 </head>
 
 <body>
-    <div class="container py-5">
-        <div class="w-50 center border rounded px-3 py-3 mx-auto">
-            <h1>Login</h1>
-            <form action="/login" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="username" value="" name="username" class="form-control">
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="col-md-4 col-12 mt-5">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h4 class="text-center mb-4">Login</h4>
+                    <form action="/login" method="post">
+                        @csrf
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" required
+                            autocomplete="off">
+                        <label for="Password">Password</label>
+                        <input type="password" name="password" id="Password" class="form-control" required>
+                        <button type="submit" class="btn btn-dark mt-3">login</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control">
-                </div>
-                <div class="mb-3 d-grid">
-                    <button name="submit" type="submit" class="btn btn-primary">Login</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </body>

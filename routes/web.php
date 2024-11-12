@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImportExcelController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ManageUserController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\UserAccess;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +27,5 @@ Route::middleware(['auth', UserAccess::class . ':admin'])->group(function () {
     Route::get('/attendance-history', [AttendanceHistory::class, 'attendanceHistory'])->name('user');
 });
 Route::middleware(['auth', UserAccess::class . ':user'])->group(function () {
-    Route::get('/user', [AdminController::class, 'user']);
+    Route::get('/index', [UserController::class, 'index'])->name('user.index');
 });
