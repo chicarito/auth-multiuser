@@ -38,16 +38,20 @@
                         </h1>
                     </div>
                 </div>
-                <form action="">
+                {{-- form absen masuk dan pulang --}}
+                <form>
                     <div class="row">
                         <div class="col-6">
-                            <button type="button" class="btn btn-dark w-100 rounded-5">Absen Masuk</button>
+                            <button type="button" id="checkInButton" class="btn btn-dark w-100 rounded-5">Absen
+                                Masuk</button>
                         </div>
                         <div class="col-6">
-                            <button type="button" class="btn btn-dark w-100 rounded-5">Absen Pulang</button>
+                            <button type="button" id="checkOutButton" class="btn btn-dark w-100 rounded-5">Absen
+                                Pulang</button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
         <div class="mt-3">
@@ -110,4 +114,5 @@
             </div>
         @endforeach
     </div>
+
 @endsection

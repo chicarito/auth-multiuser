@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,8 @@ class UserController extends Controller
     public function riwayatAbsen()
     {
         $attendances = Attendance::with('location')
-            ->where('user_id', Auth::id()) 
-            ->latest() 
+            ->where('user_id', Auth::id())
+            ->latest()
             ->get();
 
         // Menghitung jarak untuk setiap absensi
@@ -34,4 +35,6 @@ class UserController extends Controller
     {
         return view('user-absensi.profile');
     }
+
+  
 }
