@@ -28,4 +28,6 @@ Route::middleware(['auth', UserAccess::class . ':admin'])->group(function () {
 });
 Route::middleware(['auth', UserAccess::class . ':user'])->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('user.index');
+    Route::get('/riwayat-absen', [UserController::class, 'riwayatAbsen'])->name('user.riwayat');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
 });

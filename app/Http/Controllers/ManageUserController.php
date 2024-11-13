@@ -43,11 +43,12 @@ class ManageUserController extends Controller
             'name' => $validated['name'],
             'username' => $validated['username'],
             'password' => Hash::make($validated['password']),
+            'password_show' => $request->password,
             'role' => $validated['role'],
             'jabatan' => $validated['jabatan'] ?? null,
         ]);
 
-        return redirect()->route('ManageUser.index')->with('success', 'Pengguna berhasil ditambahkan');
+        return redirect()->route('manage-user.index')->with('success', 'Pengguna berhasil ditambahkan');
     }
 
 

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'karyawan1',
             'username' => 'karyawan123',
             'password' => bcrypt(123),
+            'password_show' => 123,
             'role' => 'user',
             'jabatan' => 'karyawan',
         ]);
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'karyawan2',
             'username' => 'karyawan1234',
             'password' => bcrypt(123),
+            'password_show' => 123,
             'role' => 'user',
             'jabatan' => 'karyawan',
         ]);
@@ -41,6 +43,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'karyawan3',
             'username' => 'karyawan1235',
             'password' => bcrypt(123),
+            'password_show' => 123,
             'role' => 'user',
             'jabatan' => 'karyawan',
         ]);
@@ -54,6 +57,46 @@ class DatabaseSeeder extends Seeder
             'is_active' => '1',
         ]);
         // $this->call(AttendanceSeeder::class);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
+        Attendance::create([
+            'user_id' => 2,
+            'location_id' => 1,
+            'check_in_time' => now(),
+            'check_out_time' => now(),
+            'check_in_lat' => -6.909575992785452,
+            'check_in_long' => 106.89406756120546,
+        ]);
         Attendance::create([
             'user_id' => 2,
             'location_id' => 1,
