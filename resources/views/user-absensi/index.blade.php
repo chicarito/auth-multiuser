@@ -39,18 +39,28 @@
                     </div>
                 </div>
                 {{-- form absen masuk dan pulang --}}
-
                 <div class="row">
                     <div class="col-6">
-                        <button onclick="absen('check_in')" class="btn btn-dark w-100 rounded-5">Absen
-                            Masuk</button>
+                        <form id="check_in_form" action="{{ route('user.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="latitude" id="check_in_latitude">
+                            <input type="hidden" name="longitude" id="check_in_longitude">
+                            <input type="hidden" name="type" value="check_in">
+                            <button type="submit" class="btn btn-dark w-100 rounded-5">Absen
+                                Masuk</button>
+                        </form>
                     </div>
                     <div class="col-6">
-                        <button onclick="absen('check_out')" class="btn btn-dark w-100 rounded-5">Absen
-                            Pulang</button>
+                        <form id="check_out_form" action="{{ route('user.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="latitude" id="check_out_latitude">
+                            <input type="hidden" name="longitude" id="check_out_longitude">
+                            <input type="hidden" name="type" value="check_out">
+                            <button type="submit" class="btn btn-dark w-100 rounded-5">Absen
+                                Pulang</button>
+                        </form>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="mt-3">
@@ -67,46 +77,30 @@
         </div>
     </div>
     <script>
-        function absen(type) {
+        document.getElementById('check_in_form').addEventListener('submit', function(event) {
+            event.preventDefault();
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/absen",
-                        true); // Pastikan metode POST digunakan 
-                    xhr.setRequestHeader('Content-Type',
-                        'application/json'
-                    ); // Menyertakan token CSRF 
-                    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                    xhr.send(JSON.stringify({
-                        latitude: latitude,
-                        longitude: longitude,
-                        type: type
-                    }));
-                }, showError);
+                    document.getElementById('check_in_latitude').value = position.coords.latitude;
+                    document.getElementById('check_in_longitude').value = position.coords.longitude;
+                    event.target.submit();
+                });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
+        });
+        document.getElementById('check_out_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('check_out_latitude').value = position.coords.latitude;
+                    document.getElementById('check_out_longitude').value = position.coords.longitude;
+                    event.target.submit();
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
             }
-        }
+        });
     </script>
 @endsection
 @section('content2')
