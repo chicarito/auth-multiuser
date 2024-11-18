@@ -13,7 +13,8 @@
                         <th>Nama Lokasi</th>
                         <th>Waktu Check-In</th>
                         <th>Waktu Check-Out</th>
-                        <th>Jarak ke Kantor (km)</th>
+                        <th>Jarak Check-in ke Kantor (km)</th>
+                        <th>Jarak Check-Out dari Kantor (km)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,11 +27,11 @@
                             <td>{{ $item->check_out_time }}
                             </td>
                             <td>{{ $item->distance . ' km' }}</td>
+                            <td>{{ $item->check_out_distance . ' km' }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-
 @endsection

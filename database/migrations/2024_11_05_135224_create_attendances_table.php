@@ -19,6 +19,8 @@ return new class extends Migration
             $table->timestamp('check_out_time')->nullable();
             $table->decimal('check_in_lat', 10, 8)->nullable();
             $table->decimal('check_in_long', 11, 8)->nullable();
+            $table->decimal('check_out_lat', 10, 8)->nullable();
+            $table->decimal('check_out_long', 11, 8)->nullable();
             $table->timestamps();
         });
     }

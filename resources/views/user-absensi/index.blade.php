@@ -39,18 +39,17 @@
                     </div>
                 </div>
                 {{-- form absen masuk dan pulang --}}
-                <form>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="button" id="checkInButton" class="btn btn-dark w-100 rounded-5">Absen
-                                Masuk</button>
-                        </div>
-                        <div class="col-6">
-                            <button type="button" id="checkOutButton" class="btn btn-dark w-100 rounded-5">Absen
-                                Pulang</button>
-                        </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button onclick="absen('check_in')" class="btn btn-dark w-100 rounded-5">Absen
+                            Masuk</button>
                     </div>
-                </form>
+                    <div class="col-6">
+                        <button onclick="absen('check_out')" class="btn btn-dark w-100 rounded-5">Absen
+                            Pulang</button>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -67,6 +66,48 @@
             </div>
         </div>
     </div>
+    <script>
+        function absen(type) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/absen",
+                        true); // Pastikan metode POST digunakan 
+                    xhr.setRequestHeader('Content-Type',
+                        'application/json'
+                    ); // Menyertakan token CSRF 
+                    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    xhr.send(JSON.stringify({
+                        latitude: latitude,
+                        longitude: longitude,
+                        type: type
+                    }));
+                }, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+    </script>
 @endsection
 @section('content2')
     <div class="container mb-5">
@@ -114,5 +155,4 @@
             </div>
         @endforeach
     </div>
-
 @endsection

@@ -15,6 +15,7 @@ class AttendanceHistory extends Controller
         // Menghitung jarak setiap absensi
         foreach ($attendances as $attendance) {
             $attendance->distance = $attendance->calculateDistance();
+            $attendance->check_out_distance = $attendance->calculateCheckOutDistance();
         }
 
         return view('dashboard.attendance-history.attendanceHistory', compact('attendances'));
